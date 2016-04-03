@@ -55,18 +55,13 @@ public class Author implements Serializable {
         return following;
     }
 
-    public void incrementFollower() {
-        followers++;
-    }
-
-    public void decrementFollower() {
-        followers--;
-    }
-
-    public void incrementFollowing() {
-        following++;
-    }
     public void toggleFollowing() {
+        if(isFollowing) {
+            followers--;
+        }
+        else {
+            followers++;
+        }
         isFollowing = !isFollowing;
     }
 

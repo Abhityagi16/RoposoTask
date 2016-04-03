@@ -1,9 +1,11 @@
 package com.abhishek.roposotask.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by abhishektyagi on 03/04/16.
  */
-public class Story {
+public class Story implements Serializable {
     private String id, title, description, authorId, imageUrl, verb;
     private long likesCount, commentCount;
 

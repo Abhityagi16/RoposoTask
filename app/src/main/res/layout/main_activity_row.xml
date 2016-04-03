@@ -34,16 +34,24 @@
                 android:layout_width="match_parent"
                 android:background="#44000000"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/story_title"
-                    android:layout_width="wrap_content"
-                    android:text="Title"
-                    android:gravity="center_vertical"
-                    android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/primary"
-                    android:layout_height="30dp"/>
+
+                <LinearLayout
+                    android:id="@+id/title_holder"
+                    android:layout_width="match_parent"
+                    android:transitionName="tNameHolder"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/story_title"
+                        android:layout_width="wrap_content"
+                        android:text="Title"
+                        android:gravity="center_vertical"
+                        android:layout_alignParentLeft="true"
+                        android:paddingLeft="10dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/primary"
+                        android:layout_height="30dp"/>
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/verb"
@@ -51,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:text="Title"
                     android:gravity="center_vertical"
-                    android:layout_below="@id/story_title"
+                    android:layout_below="@id/title_holder"
                     android:paddingLeft="10dp"
                     android:textColor="@color/primary"
                     android:textSize="14sp"
@@ -74,8 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="horizontal"
-            android:layout_below="@id/image_holder"
-            android:transitionName="tNameHolder">
+            android:layout_below="@id/image_holder">
 
             <TextView
                 android:id="@+id/author_name"
