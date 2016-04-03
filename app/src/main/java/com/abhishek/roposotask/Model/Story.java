@@ -4,10 +4,11 @@ package com.abhishek.roposotask.Model;
  * Created by abhishektyagi on 03/04/16.
  */
 public class Story {
-    private String id, title, description, author, imageUrl;
+    private String id, title, description, author, imageUrl, verb;
     private long likesCount, commentCount;
 
-    public Story(String id, String title, String author, String imageUrl, long likesCount, long
+    public Story(String id, String title, String author, String imageUrl, String verb, long
+            likesCount, long
             commentCount) {
         this.id = id;
         this.title = title;
