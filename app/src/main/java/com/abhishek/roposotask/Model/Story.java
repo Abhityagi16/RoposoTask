@@ -4,18 +4,21 @@ package com.abhishek.roposotask.Model;
  * Created by abhishektyagi on 03/04/16.
  */
 public class Story {
-    private String id, title, description, author, imageUrl, verb;
+    private String id, title, description, authorId, imageUrl, verb;
     private long likesCount, commentCount;
 
-    public Story(String id, String title, String author, String imageUrl, String verb, long
+    public Story(String id, String title, String authorId, String description, String imageUrl,
+                 String verb, long
             likesCount, long
             commentCount) {
         this.id = id;
         this.title = title;
-        this.author = author;
+        this.authorId = authorId;
         this.imageUrl = imageUrl;
         this.likesCount = likesCount;
         this.commentCount = commentCount;
+        this.description = description;
+        this.verb = verb;
     }
 
     public String getId() {
@@ -30,8 +33,12 @@ public class Story {
         return description;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getVerb() {
+        return verb;
+    }
+
+    public String getAuthorId() {
+        return authorId;
     }
 
     public String getImageUrl() {

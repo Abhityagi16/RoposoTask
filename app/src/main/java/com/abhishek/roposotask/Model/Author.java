@@ -1,14 +1,17 @@
 package com.abhishek.roposotask.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by abhishektyagi on 03/04/16.
  */
-public class Author {
+public class Author implements Serializable {
     String userName, about, id, imageUrl, profileUrl, handle;
+    boolean isFollowing;
     long followers, following;
 
     public Author(String id, String userName, String about, String imageUrl, String profileUrl,
-                  String handle, long followers, long following) {
+                  String handle, long followers, long following, boolean isFollowing) {
         this.id = id;
         this.userName = userName;
         this.about = about;
@@ -17,6 +20,7 @@ public class Author {
         this.handle = handle;
         this.followers = followers;
         this.following = following;
+        this.isFollowing = isFollowing;
     }
 
     public String getUserName() {
@@ -55,7 +59,18 @@ public class Author {
         followers++;
     }
 
+    public void decrementFollower() {
+        followers--;
+    }
+
     public void incrementFollowing() {
         following++;
+    }
+    public void toggleFollowing() {
+        isFollowing = !isFollowing;
+    }
+
+    public boolean isFollowing() {
+        return isFollowing;
     }
 }
