@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -97,14 +98,62 @@ public class MainActivity extends AppCompatActivity {
 
                 if(tag != null && tag.equals(StoryListAdapter.FOLLOW_TAG)) {
                     author.toggleFollowing();
-//                    mAdapter.toggleFollowing(authorId);
+////                    mAdapter.toggleFollowing(authorId);
+//
+//                    //This is the best option I can think of to avoid notifydatasetchanged() call
+////                    View v = mStaggerLayoutManager.findViewByPosition(position);
+//                    Button followButton = (Button) view;
+//                    if(followButton.getText().equals("Follow")) {
+//                        followButton.setText("Following");
+//                    }
+//                    else {
+//                        followButton.setText("Follow");
+//                    }
 
-                    //This is the best option I can think of to avoid notifydatasetchanged() call
                     if(position > 0) {
-                        mAdapter.notifyItemRangeChanged(position - 1, 4);
+                        for(int i=-1; i<=1; i++) {
+                            if(position+i < mStoryList.size()) {
+                                Story st = mStoryList.get(position + i);
+                                String authId = st.getAuthorId();
+                                if (authId.equals(authorId)) {
+                                    String text = author.isFollowing() ? "Following" : "Follow";
+                                    StoryListAdapter.ViewHolder holder = (StoryListAdapter.ViewHolder)
+                                            mRecyclerView
+                                                    .findViewHolderForAdapterPosition
+                                                            (position + i);
+                                    if (holder != null) {
+                                        holder.follow.setText(text);
+                                    }
+
+                                }
+                            }
+
+
+                        }
                     }
                     else {
-                        mAdapter.notifyItemRangeChanged(position, 4);
+                        //refreshing follow button on 3 rows
+                        for(int i=0; i<=2; i++) {
+                            if(position+i < mStoryList.size()) {
+                                Story st = mStoryList.get(position + i);
+                                String authId = st.getAuthorId();
+
+//                            Author auth = mAuthorMap.get(authId);
+                                if(authId.equals(authorId)) {
+                                    String text = author.isFollowing() ? "Following" : "Follow";
+                                    StoryListAdapter.ViewHolder holder = (StoryListAdapter.ViewHolder)
+                                            mRecyclerView
+                                                    .findViewHolderForAdapterPosition
+                                                            (position+i);
+//                            Button follow = (Button) v.findViewById(R.id.follow_button);
+                                    if(holder != null) {
+                                        holder.follow.setText(text);
+                                    }
+                                }
+                            }
+
+                        }
+//                        mAdapter.notifyItemRangeChanged(position, 4);
                     }
 
                 }

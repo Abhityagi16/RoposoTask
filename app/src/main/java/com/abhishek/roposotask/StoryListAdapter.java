@@ -72,7 +72,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         public void onClick(View v) {
 
             if(v.getId() == follow.getId()) {
-                mItemClickListener.onItemClick(itemView, getAdapterPosition(), FOLLOW_TAG);
+                mItemClickListener.onItemClick(follow, getAdapterPosition(), FOLLOW_TAG);
             }
             else {
                 if(mItemClickListener != null) {
@@ -104,10 +104,19 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         Story story = mStoryList.get(position);
 
         String authorId = story.getAuthorId();
-        Author author = mAuthorMap.get(authorId);
-        String followText = author.isFollowing() ? "Following" : "Follow";
+        final Author author = mAuthorMap.get(authorId);
 
+        String followText = author.isFollowing() ? "Following" : "Follow";
         holder.title.setText(story.getTitle());
+//        holder.follow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                author.toggleFollowing();
+//
+//                holder.follow.setText(followText);
+//
+//            }
+//        });
         holder.follow.setText(followText);
         holder.verb.setText(story.getVerb());
         holder.authorName.setText(author.getUserName());
